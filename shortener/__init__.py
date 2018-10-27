@@ -31,4 +31,8 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
+    from . import shortener
+    app.register_blueprint(shortener.sh)
+    app.add_url_rule('/shorten', endpoint='shorten')
+
     return app
